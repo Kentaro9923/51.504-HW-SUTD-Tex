@@ -1,0 +1,341 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry} 
+\geometry{a4paper,scale=0.8}
+
+\title{HW1}
+\author{Zhen QIAO}
+\date{September 2024}
+
+\begin{document}
+
+\maketitle
+\section*{Question 1}
+
+Suppose $A$ is a random variable with state space $\{0, 1\}$ and $B$ is a random variable with state space $\{1, 2, 3\}$. Suppose that the joint probability of $A$ and $B$ follows $P(A = 0, B = 1) = 1/36$, $P(A = 0, B = 2) = 5/18$, $P(A = 0, B = 3) = 1/9$, $P(A = 1, B = 1) = 1/4$ and $P(A = 1, B = 2) = 5/36$. Drawing a probability table might help.
+
+\begin{enumerate}
+    \item[(a)] [4 points] Calculate $P(A = 1, B = 3)$.
+    \item[(b)] [4 points] Calculate the marginal distribution of $B$.
+    \item[(c)] [8 points] Calculate the expectation and variance of $B$.
+    \item[(d)] [4 points] Calculate $P(A = 0|B = 1)$.
+\end{enumerate}
+
+\subsection*{Solution}
+
+Let's start by creating a joint probability table for $A$ and $B$:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|ccc|c}
+$A \backslash B$ & 1 & 2 & 3 & $P(A)$ \\
+\hline
+0 & 1/36 & 5/18 & 1/9 & $P(A=0)$ \\
+1 & 1/4 & 5/36 & $P(A=1,B=3)$ & $P(A=1)$ \\
+\hline
+$P(B)$ & $P(B=1)$ & $P(B=2)$ & $P(B=3)$ & 1
+\end{tabular}
+\end{table}
+
+\subsection*{(a) Calculate $P(A = 1, B = 3)$}
+
+To find $P(A = 1, B = 3)$, we can use the fact that the sum of all probabilities in the joint distribution must equal 1.
+
+\begin{align*}
+1 &= \sum_{a,b} P(A=a, B=b) \\
+&= \frac{1}{36} + \frac{5}{18} + \frac{1}{9} + \frac{1}{4} + \frac{5}{36} + P(A=1, B=3) \\
+P(A=1, B=3) &= 1 - (\frac{1}{36} + \frac{5}{18} + \frac{1}{9} + \frac{1}{4} + \frac{5}{36}) \\
+&= 1 - (\frac{1}{36} + \frac{10}{36} + \frac{4}{36} + \frac{9}{36} + \frac{5}{36}) \\
+&= 1 - \frac{29}{36} = \frac{7}{36}
+\end{align*}
+
+Therefore, $P(A = 1, B = 3) = \frac{7}{36}$.
+
+\subsection*{(b) Calculate the marginal distribution of $B$}
+
+The marginal distribution of $B$ can be calculated by summing over all values of $A$ for each value of $B$:
+
+\begin{align*}
+P(B = 1) &= P(A = 0, B = 1) + P(A = 1, B = 1) = \frac{1}{36} + \frac{1}{4} = \frac{10}{36} \\
+P(B = 2) &= P(A = 0, B = 2) + P(A = 1, B = 2) = \frac{5}{18} + \frac{5}{36} = \frac{15}{36} \\
+P(B = 3) &= P(A = 0, B = 3) + P(A = 1, B = 3) = \frac{1}{9} + \frac{7}{36} = \frac{11}{36}
+\end{align*}
+
+\subsection*{(c) Calculate the expectation and variance of $B$}
+
+First, let's calculate the expectation of $B$:
+
+\begin{align*}
+E[B] &= \sum_{b} b \cdot P(B = b) \\
+&= 1 \cdot \frac{10}{36} + 2 \cdot \frac{15}{36} + 3 \cdot \frac{11}{36} \\
+&= \frac{10}{36} + \frac{30}{36} + \frac{33}{36} = \frac{73}{36} \approx 2.028
+\end{align*}
+
+Now, let's calculate the variance of $B$:
+
+\begin{align*}
+Var(B) &= E[B^2] - (E[B])^2 \\
+E[B^2] &= \sum_{b} b^2 \cdot P(B = b) \\
+&= 1^2 \cdot \frac{10}{36} + 2^2 \cdot \frac{15}{36} + 3^2 \cdot \frac{11}{36} \\
+&= \frac{10}{36} + \frac{60}{36} + \frac{99}{36} = \frac{169}{36}
+\end{align*}
+
+Therefore,
+
+\begin{align*}
+Var(B) &= E[B^2] - (E[B])^2 \\
+&= \frac{169}{36} - (\frac{73}{36})^2 \\
+&= \frac{169}{36} - \frac{5329}{1296} \\
+&= \frac{6084}{1296} - \frac{5329}{1296} \\
+&= \frac{755}{1296} \approx 0.5825
+\end{align*}
+
+\subsection*{(d) Calculate $P(A = 0|B = 1)$}
+
+We can use Bayes' theorem to calculate $P(A = 0|B = 1)$:
+
+\begin{align*}
+P(A = 0|B = 1) &= \frac{P(A = 0, B = 1)}{P(B = 1)} \\
+&= \frac{\frac{1}{36}}{\frac{10}{36}} \\
+&= \frac{1}{10} = 0.1
+\end{align*}
+
+\section*{Question 2}
+
+\subsection*{(a) Discrete Random Variable X}
+
+Let X be a discrete random variable with state space \{1, 2, 3\}, representing a hypothetical three-sided die. The probabilities associated with the state space are:
+
+\begin{align*}
+P(X = 1) &= 2\theta \\
+P(X = 2) &= 3\theta \\
+P(X = 3) &= 1 - 5\theta
+\end{align*}
+
+\subsubsection*{Range of possible values for $\theta$}
+
+To find the range of $\theta$, we need to ensure that all probabilities are non-negative and sum to 1.
+
+\begin{align*}
+2\theta &\geq 0 \\
+3\theta &\geq 0 \\
+1 - 5\theta &\geq 0 \\
+2\theta + 3\theta + (1 - 5\theta) &= 1
+\end{align*}
+
+From these conditions:
+
+\begin{align*}
+\theta &\geq 0 \\
+\theta &\leq \frac{1}{5}
+\end{align*}
+
+Therefore, the range of possible values for $\theta$ is $[0, \frac{1}{5}]$.
+
+\subsubsection*{Maximum Likelihood Estimator of X}
+
+Let $x_1$, $x_2$, and $x_3$ be the number of times 1, 2, and 3 show up in the data sample set, respectively. The likelihood function is:
+
+\begin{align*}
+L(\theta) = (2\theta)^{x_1} \cdot (3\theta)^{x_2} \cdot (1-5\theta)^{x_3}
+\end{align*}
+
+To find the MLE, we maximize the log-likelihood:
+
+\begin{align*}
+\ell(\theta) &= \log L(\theta) \\
+&= x_1 \log(2\theta) + x_2 \log(3\theta) + x_3 \log(1-5\theta)
+\end{align*}
+
+Differentiating with respect to $\theta$ and setting to zero:
+
+\begin{align*}
+\frac{d\ell}{d\theta} &= \frac{x_1}{\theta} + \frac{x_2}{\theta} - \frac{5x_3}{1-5\theta} = 0 \\
+\frac{x_1 + x_2}{\theta} &= \frac{5x_3}{1-5\theta}
+\end{align*}
+
+Solving for $\theta$:
+
+\begin{align*}
+\hat{\theta}_{MLE} = \frac{x_1 + x_2}{5(x_1 + x_2 + x_3)}
+\end{align*}
+
+This is the Maximum Likelihood Estimator of X in terms of $x_1$, $x_2$, and $x_3$.
+
+\subsection*{(b) Uniform Distribution MLE}
+
+Let $X_1, ..., X_N$ be a sample set of Uniform(a, b), where b $>$ a and a and b are unknown parameters.
+
+The likelihood function using indicator functions is:
+
+\begin{align*}
+L(a,b) = \prod_{i=1}^N \frac{1}{b-a} \cdot I_{[a,b]}(X_i)
+\end{align*}
+
+where $I_{[a,b]}(x)$ is the indicator function that gives 1 when x is in [a,b] and 0 otherwise.
+
+The log-likelihood function is:
+
+\begin{align*}
+\ell(a,b) = -N \log(b-a) + \sum_{i=1}^N \log(I_{[a,b]}(X_i))
+\end{align*}
+
+To maximize this, we need:
+1. All $X_i$ to be within [a,b] for the indicator functions to be 1.
+2. (b-a) to be as small as possible.
+
+Therefore, the MLEs are:
+
+\begin{align*}
+\hat{a} &= \min(X_1, ..., X_N) \\
+\hat{b} &= \max(X_1, ..., X_N)
+\end{align*}
+
+These estimators minimize the interval [a,b] while ensuring all observed data points fall within it.
+
+\section*{Question 3: 2-means Clustering}
+
+Given data set: $\{1, 2, 3, 8, 9, 10\}$
+Initial clustering sets: $C_1 = \{2, 8\}$ and $C_2 = \{1, 3, 9, 10\}$
+
+\subsection*{(a) Compute the centroids $\mu_1$ of $C_1$ and $\mu_2$ of $C_2$}
+
+The centroid is calculated as the mean of all points in the cluster.
+
+For $C_1$:
+\[\mu_1 = \frac{2 + 8}{2} = 5\]
+
+For $C_2$:
+\[\mu_2 = \frac{1 + 3 + 9 + 10}{4} = \frac{23}{4} = 5.75\]
+
+\subsection*{(b) Compute new clusters formed by centroids $\mu_1$ and $\mu_2$}
+
+We'll assign each point to the nearest centroid.
+
+For each point $x$ in the dataset:
+\begin{itemize}
+    \item If $|x - \mu_1| < |x - \mu_2|$, assign $x$ to $D_1$
+    \item Otherwise, assign $x$ to $D_2$
+\end{itemize}
+
+Calculations:
+\begin{align*}
+    1: |1 - 5| = 4 &> |1 - 5.75| = 4.75 &\Rightarrow D_1 \\
+    2: |2 - 5| = 3 &< |2 - 5.75| = 3.75 &\Rightarrow D_1 \\
+    3: |3 - 5| = 2 &< |3 - 5.75| = 2.75 &\Rightarrow D_1 \\
+    8: |8 - 5| = 3 &< |8 - 5.75| = 2.25 &\Rightarrow D_2 \\
+    9: |9 - 5| = 4 &> |9 - 5.75| = 3.25 &\Rightarrow D_2 \\
+    10: |10 - 5| = 5 &> |10 - 5.75| = 4.25 &\Rightarrow D_2
+\end{align*}
+
+Therefore:
+\[D_1 = \{1, 2, 3\} \quad \text{and} \quad D_2 = \{8, 9, 10\}\]
+
+\subsection*{(c) Calculate new centroids of $D_1$ and $D_2$, and check stability}
+
+New centroids:
+
+For $D_1$:
+\[\mu_1' = \frac{1 + 2 + 3}{3} = 2\]
+
+For $D_2$:
+\[\mu_2' = \frac{8 + 9 + 10}{3} = 9\]
+
+To check stability, we need to see if these new centroids would change the clustering:
+
+Calculations:
+\begin{align*}
+    1: |1 - 2| = 1 &< |1 - 9| = 8 &\Rightarrow D_1 \\
+    2: |2 - 2| = 0 &< |2 - 9| = 7 &\Rightarrow D_1 \\
+    3: |3 - 2| = 1 &< |3 - 9| = 6 &\Rightarrow D_1 \\
+    8: |8 - 2| = 6 &> |8 - 9| = 1 &\Rightarrow D_2 \\
+    9: |9 - 2| = 7 &> |9 - 9| = 0 &\Rightarrow D_2 \\
+    10: |10 - 2| = 8 &> |10 - 9| = 1 &\Rightarrow D_2
+\end{align*}
+
+The clustering remains the same: $D_1 = \{1, 2, 3\}$ and $D_2 = \{8, 9, 10\}$
+
+Therefore, this clustering is stable. No further iterations of the k-means algorithm would change the cluster assignments.
+
+\section*{Question 4}
+
+Given the function of $X$ and $Y$:
+
+\[
+f(x,y) = 
+\begin{cases} 
+\frac{6}{7}(x^2 + \frac{xy}{2}), & \text{if } 0 \leq x \leq 1, 0 \leq y \leq 2; \\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\subsection*{(a) Show that $f(x,y)$ is a joint probability density function}
+
+To prove that $f(x,y)$ is a joint probability density function, we need to show:
+1. $f(x,y) \geq 0$ for all $x$ and $y$
+2. $\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} f(x,y) \, dx \, dy = 1$
+
+Proof:
+
+1. Non-negativity: 
+   For $0 \leq x \leq 1$ and $0 \leq y \leq 2$, $f(x,y) = \frac{6}{7}(x^2 + \frac{xy}{2}) \geq 0$ 
+   (since $x^2 \geq 0$ and $xy \geq 0$ in this range).
+   Outside this range, $f(x,y) = 0$, which is also non-negative.
+
+2. Integration to 1:
+\begin{align*}
+\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} f(x,y) \, dx \, dy 
+&= \int_{0}^{2}\int_{0}^{1} \frac{6}{7}(x^2 + \frac{xy}{2}) \, dx \, dy \\
+&= \frac{6}{7}\int_{0}^{2}\int_{0}^{1} (x^2 + \frac{xy}{2}) \, dx \, dy \\
+&= \frac{6}{7}\int_{0}^{2} [\frac{x^3}{3} + \frac{xy^2}{4}]_{0}^{1} \, dy \\
+&= \frac{6}{7}\int_{0}^{2} (\frac{1}{3} + \frac{y}{4}) \, dy \\
+&= \frac{6}{7}[\frac{y}{3} + \frac{y^2}{8}]_{0}^{2} \\
+&= \frac{6}{7}(\frac{2}{3} + \frac{1}{2}) \\
+&= \frac{6}{7} \cdot \frac{7}{6} = 1
+\end{align*}
+
+Therefore, $f(x,y)$ is a valid joint probability density function.
+
+\subsection*{(b) Find the probability density function of X}
+
+To find the marginal PDF of $X$, we integrate $f(x,y)$ with respect to $y$:
+
+\begin{align*}
+f_X(x) &= \int_{-\infty}^{\infty} f(x,y) \, dy \\
+&= \int_{0}^{2} \frac{6}{7}(x^2 + \frac{xy}{2}) \, dy \quad \text{for } 0 \leq x \leq 1 \\
+&= \frac{6}{7}(x^2y + \frac{xy^2}{4})\bigg|_{0}^{2} \\
+&= \frac{6}{7}(2x^2 + x) \quad \text{for } 0 \leq x \leq 1
+\end{align*}
+
+Therefore, the probability density function of $X$ is:
+
+\[
+f_X(x) = 
+\begin{cases} 
+\frac{6}{7}(2x^2 + x), & \text{if } 0 \leq x \leq 1; \\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\subsection*{(c) Find $\Pr(X > Y)$}
+
+To find $\Pr(X > Y)$, we need to integrate the joint PDF over the region where $X > Y$:
+
+\begin{align*}
+\Pr(X > Y) &= \int_{0}^{1}\int_{0}^{x} f(x,y) \, dy \, dx \\
+&= \int_{0}^{1}\int_{0}^{x} \frac{6}{7}(x^2 + \frac{xy}{2}) \, dy \, dx \\
+&= \frac{6}{7}\int_{0}^{1} [x^2y + \frac{xy^2}{4}]_{0}^{x} \, dx \\
+&= \frac{6}{7}\int_{0}^{1} (x^3 + \frac{x^3}{4}) \, dx \\
+&= \frac{6}{7}\int_{0}^{1} \frac{5x^3}{4} \, dx \\
+&= \frac{6}{7} \cdot \frac{5}{4} \cdot \frac{x^4}{4}\bigg|_{0}^{1} \\
+&= \frac{6}{7} \cdot \frac{5}{4} \cdot \frac{1}{4} \\
+&= \frac{15}{28} \approx 0.5357
+\end{align*}
+
+Therefore, $\Pr(X > Y) = \frac{15}{28}$.
+
+
+
+\end{document}
